@@ -1,0 +1,28 @@
+{% extends 'base/base.html' %}
+
+{% block titulo %}
+{{ titulo }}
+{% endblock %}
+
+{% block contenido %}
+
+<h3>Estoy reemplazando el contenido de mi padre</h3>
+<p><strong>Titulo:</strong> Estoy escribiendo un titulo</p>
+
+<h4><strong>ARTICULOS:</strong></h4>
+{% for articulo in articulos %}
+<div class="card m-5">
+    <div class="card-title m-2">
+        <h5>{{ articulo.titulo }}</h5>
+    </div>
+    <div class="card-body m-2">
+
+        <h6>{{ articulo.subtitulo }}</h6>
+        <p><strong>Fecha creacion: </strong> {{ articulo.fecha_creacion }}</p>
+        <hr>
+        <p>{{ articulo.contenido }}</p>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}

@@ -4,9 +4,13 @@ from django.conf.urls.static import static # faltaban estas importaciones
 from django.contrib import admin
 from django.urls import include, path
 
+from proyecto_1.views import con_contenido_dinamico, inicio
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', inicio, name="inicio"),
+    path('con/', con_contenido_dinamico, name="prueba_1"),
     path('articulo/', include('app.mi_primer_app.urls')),
      # agregamos las rutas de mi aplicacion
 ]
