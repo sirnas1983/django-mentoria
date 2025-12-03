@@ -1,0 +1,10 @@
+
+{% load static %}
+
+
+<form method="post" class="form">
+    {% csrf_token %}
+    {{ form.as_div }}
+
+    <button type="submit" class="btn btn-success p-2">Comentar</button>
+</form>

@@ -1,4 +1,5 @@
 {% extends 'base/base.html' %}
+{% load static %}
 
 {% block titulo %}
 {{ titulo }}
@@ -9,20 +10,24 @@
 <h3>Estoy reemplazando el contenido de mi padre</h3>
 <p><strong>Titulo:</strong> Estoy escribiendo un titulo</p>
 
-<h4><strong>ARTICULOS:</strong></h4>
+<h4><strong>ARTICULOS {{ titulo }}</strong></h4>
 {% for articulo in articulos %}
-<div class="card m-5">
-    <div class="card-title m-2">
-        <h5>{{ articulo.titulo }}</h5>
-    </div>
-    <div class="card-body m-2">
+    {% if articulo.habilitado %}
+        <div class="card m-5">
+            <div class="card-title m-2">
+                <h5>{{ articulo.titulo }}</h5>
+            </div>
 
-        <h6>{{ articulo.subtitulo }}</h6>
-        <p><strong>Fecha creacion: </strong> {{ articulo.fecha_creacion }}</p>
-        <hr>
-        <p>{{ articulo.contenido }}</p>
-    </div>
-</div>
+            <img src="{% static 'img/captura.png' %}">
+
+            <div class="card-body m-2">
+
+                <h6>{{ articulo.subtitulo }}</h6>
+                <p><strong>Fecha creacion: </strong> {{ articulo.fecha_creacion }}</p>
+                <hr>
+            </div>
+        </div>
+    {% endif %}
 {% endfor %}
 
 {% endblock %}

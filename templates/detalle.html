@@ -1,0 +1,49 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block titulo %}
+{{ titulo }}
+{% endblock %}
+
+{% block contenido %}
+
+<h3>Estoy reemplazando el contenido de mi padre</h3>
+<p><strong>Titulo:</strong> Estoy escribiendo un titulo</p>
+
+<h4><strong>ARTICULO:</strong></h4>
+
+    {% if articulo.habilitado %}
+        <div class="card m-5">
+            <div class="card-title m-2">
+                <h5>{{ articulo.titulo }}</h5>
+            </div>
+
+            <img src="{% static 'img/captura.png' %}">
+
+            <div class="card-body m-2">
+
+                <h6>{{ articulo.subtitulo }}</h6>
+                <p><strong>Fecha creacion: </strong> {{ articulo.fecha_creacion }}</p>
+                <hr>
+                <p>{{ articulo.contenido }}</p>
+                <a class="btn btn-warning" href="{% url 'articulo:modificar' articulo.id_articulo %}">Modificar</a>
+                
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form_comentario.as_p }}
+                    <button type="submit" class="btn btn-success">Enviar comentario</button>
+                </form>
+
+            </div>
+            <div class="card-footer">
+                {% for comentario in comentarios %}
+                    <p>{{ comentario.autor }}: {{ comentario.contenido }}</p>
+                    {% if request.user.is_staff == True %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+
+{% endblock %}

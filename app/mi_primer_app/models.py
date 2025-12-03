@@ -2,12 +2,15 @@ from django.db import models
 
 # Create your models here.
 class Articulo(models.Model):
-
     id_articulo = models.AutoField(primary_key=True)
     titulo = models.CharField(max_length=50)
     subtitulo = models.CharField(max_length=100)
     contenido = models.TextField(max_length=5000)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
+    habilitado = models.BooleanField(default=True)
+
+    def __str__(self):
+        return f"{self.id_articulo} - Titulo: {self.titulo}"
 
 
 class Comentario(models.Model):

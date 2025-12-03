@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block titulo %}
+{{ titulo }}
+{% endblock %}
+
+{% block contenido %}
+
+<h3>Estoy reemplazando el contenido de mi padre</h3>
+<p><strong>Titulo:</strong> Estoy escribiendo un titulo</p>
+
+<h4><strong>AGREGAR ARTICULO:</strong></h4>
+
+<form method="post" class="form">
+    {% csrf_token %}
+    {{ form.as_div }}
+
+    <button type="submit" class="btn btn-success p-2">Cargar Articulo</button>
+</form>
+
+{% endblock %}
