@@ -9,8 +9,8 @@ class ComentarioInline(admin.TabularInline):  # o admin.StackedInline
 
 @admin.register(Articulo)
 class ArticuloAdmin(admin.ModelAdmin):
-    list_display = ("id_articulo", "titulo", "subtitulo", "fecha_creacion")
-    search_fields = ("titulo", "subtitulo")
+    list_display = ("id_articulo", "titulo", "subtitulo", "fecha_creacion", "usuario")
+    search_fields = ("titulo", "subtitulo", "usuario")
     inlines = [ComentarioInline]
 
 @admin.register(Comentario)

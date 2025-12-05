@@ -17,9 +17,9 @@
             <div class="card-title m-2">
                 <h5>{{ articulo.titulo }}</h5>
             </div>
-
-            <img src="{% static 'img/captura.png' %}">
-
+            {% if articulo.imagen != None %}
+            <img src="{{ articulo.imagen.url }}">
+        {% endif %}
             <div class="card-body m-2">
 
                 <h6>{{ articulo.subtitulo }}</h6>

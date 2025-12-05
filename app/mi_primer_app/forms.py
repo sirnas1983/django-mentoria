@@ -7,17 +7,17 @@ from app.mi_primer_app.models import Articulo, Comentario
 class ArticuloFormulario(forms.ModelForm):
     class Meta:
         model = Articulo
-        fields = ['titulo','subtitulo','contenido']
+        fields = ['titulo','subtitulo','contenido', 'imagen']
 
 class ArticuloFormularioAdmin(forms.ModelForm):
     class Meta:
         model = Articulo
-        fields = ['titulo','subtitulo','contenido', 'habilitado']
+        fields = ['titulo','subtitulo','contenido', 'imagen','habilitado']
 
 class ComentarioForm(forms.ModelForm):
     class Meta:
         model = Comentario
-        fields = ['autor', 'contenido']
+        fields = ['contenido']
    
 
 

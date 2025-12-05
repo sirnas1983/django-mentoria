@@ -7,6 +7,7 @@ app_name = 'articulo'
 
 urlpatterns = [
     path('', ListaArticulos.as_view() , name='ver-todos'),
+    path('admin/', admin.site.urls),
     path('ver/<int:pk>/', VerArticulo.as_view(), name='detalle'),
     # path('eliminar/<int:pk>/', <vista>, name='eliminar'),
     path('agregar/', AgregarArticulo.as_view(), name='agregar'),

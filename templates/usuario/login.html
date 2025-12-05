@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block titulo %}
+Login
+{% endblock %}
+
+{% block contenido %}
+
+<h2>Login usuario</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <label for="username">Nombre de usuario:</label>
+    <input id="username" name="username" placeholder="Ingrese aqui su nombre de usuario..." />
+    <hr>
+    <label for="password">Nombre de usuario:</label>
+    <input type="password" name="password" id="password" placeholder="Ingrese aqui su contraseña..." />
+
+    <button type="submit" class="btn btn-primary">Registrar</button>
+</form>
+
+{% endblock %}

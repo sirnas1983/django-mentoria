@@ -12,7 +12,7 @@
 
 <h4><strong>AGREGAR ARTICULO:</strong></h4>
 
-<form method="post" class="form">
+<form method="post" enctype="multipart/form-data" class="form">
     {% csrf_token %}
     {{ form.as_div }}
 
