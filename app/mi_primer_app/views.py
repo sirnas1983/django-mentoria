@@ -52,6 +52,10 @@ class AgregarArticulo(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 class ModificarArticulo(UserPassesTestMixin, UpdateView):
+
+    def test_func(self):
+        return self.request.user.is_authenticated and (self.request.user.is_superuser or self.get_object().usuario == self.request.user)
+
     model = Articulo
     template_name = 'agregar.html'
     form_class = ArticuloFormularioAdmin
