@@ -12,22 +12,28 @@
 
 <h4><strong>ARTICULOS {{ titulo }}</strong></h4>
 {% for articulo in articulos %}
-    {% if articulo.habilitado %}
-        <div class="card m-5">
-            <div class="card-title m-2">
-                <h5>{{ articulo.titulo }}</h5>
-            </div>
-            {% if articulo.imagen != None %}
-            <img src="{{ articulo.imagen.url }}">
-        {% endif %}
-            <div class="card-body m-2">
-
-                <h6>{{ articulo.subtitulo }}</h6>
-                <p><strong>Fecha creacion: </strong> {{ articulo.fecha_creacion }}</p>
-                <hr>
-            </div>
-        </div>
+{% if articulo.habilitado %}
+<div class="card m-5">
+    <div class="card-title m-2">
+        <a href="{{ articulo.url_articulo }}">
+            <h5>{{ articulo.titulo }}</h5>
+        </a>
+    </div>
+    {% if articulo.imagen != None %}
+    <img src="{{ articulo.imagen.url }}" style="max-height: 100px; width: 100%;">
     {% endif %}
+    <div class="card-body m-2">
+
+        <h6>{{ articulo.subtitulo }}</h6>
+        <p><strong>Fecha creacion: </strong> {{ articulo.fecha_creacion }}</p>
+        <hr>
+    </div>
+</div>
+{% endif %}
 {% endfor %}
+
+{% if user.is_colaborador %}
+<a href="{% url 'articulo:agregar' %}" class="btn btn-primary p-2">Crear articulo</a>
+{% endif %}
 
 {% endblock %}

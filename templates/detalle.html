@@ -18,30 +18,25 @@
         <h5>{{ articulo.titulo }}</h5>
     </div>
 
-    <img src="{% static 'img/captura.png' %}">
+    <img src="{{ articulo.imagen.url }} ">
 
     <div class="card-body m-2">
 
-        {% if user.is_anonymus %}
-            <h2>USTED NO TIENE PERMISOS PARA NAVEGAR AQUI</h2>
+        <h6>{{ articulo.subtitulo }}</h6>
+        <p><strong>Fecha creacion: </strong> {{ articulo.fecha_creacion }}</p>
+        <hr>
+        <p>{{ articulo.contenido }}</p>
+        <a class="btn btn-warning" href="{% url 'articulo:modificar' articulo.id_articulo %}">Modificar</a>
+        {% if user.is_authenticated %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form_comentario.as_p }}
+            <button type="submit" class="btn btn-success">Enviar comentario</button>
+        </form>
         {% else %}
-
-            <h6>{{ articulo.subtitulo }}</h6>
-            <p><strong>Fecha creacion: </strong> {{ articulo.fecha_creacion }}</p>
-            <hr>
-            <p>{{ articulo.contenido }}</p>
-            <a class="btn btn-warning" href="{% url 'articulo:modificar' articulo.id_articulo %}">Modificar</a>
-            {% if user.is_authenticated %}
-            <form method="post">
-                {% csrf_token %}
-                {{ form_comentario.as_p }}
-                <button type="submit" class="btn btn-success">Enviar comentario</button>
-            </form>
-            {% else %}
-            <a href="{% url 'login' %}">
-                <h3>Para comentar debe estar logueado</h3>
-            </a>
-            {% endif %}
+        <a href="{% url 'login' %}">
+            <h3>Para comentar debe estar logueado</h3>
+        </a>
         {% endif %}
 
     </div>

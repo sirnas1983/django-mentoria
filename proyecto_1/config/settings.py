@@ -16,6 +16,9 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 print(BASE_DIR)
 
+# Para  usar un usuario 'personalizado' en djando indicamos con esta 
+# propiedad que clase es la del usuario
+AUTH_USER_MODEL = 'usuario.Usuario'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -24,7 +27,7 @@ print(BASE_DIR)
 SECRET_KEY = 'django-insecure-##$v6ho4f4*z99&^hp&sm15s^95_tx3qg+v+8uh(x1m+16yhmd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -40,8 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'app.mi_primer_app',
-   
-
+    'app.usuario',
 ]
 
 MIDDLEWARE = [
@@ -133,3 +135,5 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+

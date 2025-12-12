@@ -37,11 +37,14 @@ class VerArticulo(DetailView):
         context['comentarios'] = self.object.comentarios.all()
         return context
 
-class AgregarArticulo(LoginRequiredMixin, CreateView):
+class AgregarArticulo(UserPassesTestMixin, CreateView):
     model = Articulo
     template_name = 'agregar.html'
     form_class = ArticuloFormulario
     success_url = reverse_lazy('articulo:ver-todos')
+
+    def test_func(self):
+        return self.request.user.is_colaborador or self.request.user.is_superuser
 
     def form_valid(self, form):
         form.instance.usuario = self.request.user

@@ -9,6 +9,7 @@ from proyecto_1.views import LoginUsuario, RegistrarUsuario, con_contenido_dinam
 
 urlpatterns = [
     path('', inicio, name="inicio"),
+    path('admin/',admin.site.urls),
     path('usuario/registro/', RegistrarUsuario.as_view(), name='registro'),
     path('usuario/login/', LoginUsuario.as_view(), name="login"),
     path('con/', con_contenido_dinamico, name="prueba_1"),
